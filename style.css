@@ -1,0 +1,148 @@
+/* --- CSS STYLES --- */
+:root {
+    --primary-color: #ff4b4b;
+    --secondary-color: #ff9a9a;
+    --bg-color: #f0f2f5;
+    --player-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Full Screen Background Image */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Glassmorphism Player Container */
+.music-container {
+    background-color: var(--player-bg);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    padding: 30px;
+    position: relative;
+    width: 400px;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.img-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+    border: 5px solid white;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: rotate 10s linear infinite;
+    animation-play-state: paused;
+}
+
+/* Animation class added via JS when playing */
+.music-container.play .img-container img {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--text-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.info p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.progress-container {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px 0;
+    height: 8px;
+    width: 100%;
+}
+
+.progress {
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.action-btn {
+    background-color: transparent;
+    border: 0;
+    color: #999;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 20px;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.action-btn:hover {
+    color: var(--primary-color);
+}
+
+.action-btn-big {
+    color: var(--text-color);
+    font-size: 35px;
+}
+
+.action-btn-big:hover {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
